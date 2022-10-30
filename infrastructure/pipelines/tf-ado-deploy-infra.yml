@@ -27,7 +27,7 @@ resources:
   repositories:
     - repository: mlops-templates
       name: Ritaja/mlops-templates
-      endpoint: github
+      endpoint: github-connection
       type: github
       ref: ft_featurestore #branch name
 
