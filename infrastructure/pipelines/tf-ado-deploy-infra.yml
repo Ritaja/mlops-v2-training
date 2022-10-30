@@ -29,7 +29,7 @@ resources:
       name: Ritaja/mlops-templates
       endpoint: github-connection
       type: github
-      ref: ft_featurestore #branch name
+      ref: main #branch name
 
 stages :
   - stage: CreateStorageAccountForTerraformState
