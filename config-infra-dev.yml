@@ -7,7 +7,7 @@ variables:
 
   namespace: mlopsv2rs #Note: A namespace with many characters will cause storage account creation to fail due to storage account names having a limit of 24 characters.
   postfix: 0659
-  location: westus
+  location: eastus
 
   environment: dev
   enable_aml_computecluster: true
