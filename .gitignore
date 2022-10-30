@@ -2,6 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
+
+# personal dev stuff
+.gitcommitsetup.md
 .vscode
 
 # Mac stuff
