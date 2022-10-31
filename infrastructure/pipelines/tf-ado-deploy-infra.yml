@@ -72,18 +72,8 @@ stages:
             parameters:
               jumphost_username: ${{parameters.jumphost_username}}
               jumphost_password: ${{parameters.jumphost_password}}
-
-  - stage: DeployFeatureStore
-    displayName: Deploy Feature Store Components
-    jobs:
-      - job: DeployFeatureStoreResources
-        displayName: Deploy Feature Store Resources
-        steps:
-          - checkout: self
-            path: s/
-          - checkout: mlops-templates
-            path: s/templates/
           - template: templates/infra/create-featurestore.yml@mlops-templates
             parameters:
               featurestore_sql_username: ${{parameters.featurestore_sql_username}}
-              featurestore_sql_password: ${{parameters.featurestore_sql_password}}
+              featurestore_sql_password: ${{parameters.featurestore_sql_password}
+          
