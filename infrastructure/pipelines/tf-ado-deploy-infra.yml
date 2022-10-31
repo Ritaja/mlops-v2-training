@@ -27,7 +27,7 @@ trigger:
   - none
 
 pool:
-  vmImage: "$(ap_vm_image)"
+  vmImage: $(ap_vm_image)
 
 resources:
   repositories:
@@ -72,6 +72,7 @@ stages:
             parameters:
               jumphost_username: ${{parameters.jumphost_username}}
               jumphost_password: ${{parameters.jumphost_password}}
+
   - stage: DeployFeatureStore
     displayName: Deploy Feature Store Components
     jobs:
