@@ -6,7 +6,7 @@ variables:
   ap_vm_image: ubuntu-20.04
 
   namespace: mlopsv2 #Note: A namespace with many characters will cause storage account creation to fail due to storage account names having a limit of 24 characters.
-  postfix: 043
+  postfix: 044
   location: eastus
   feathrprefix: feathr # Used to generate name for all feature store components that will be created
   environment: dev
