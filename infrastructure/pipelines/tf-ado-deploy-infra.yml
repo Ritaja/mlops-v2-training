@@ -22,6 +22,15 @@ parameters:
   - name: featurestore_sql_password
     type: string
     default: "ThisIsNotVerySecure!"
+  - name: AAD_CLIENT_ID
+    type: string
+    default: "d5d082e1-641e-46a3-b681-81c885f355ab"
+  - name: AZURE_TENANT_ID
+    type: string
+    default: "72f988bf-86f1-41af-91ab-2d7cd011db47"
+  - name: AZURE_AAD_OBJECT_ID
+    type: string
+    default: "075c6b3e-1a26-44ff-9118-12cfd9fe75f8"
 
 trigger:
   - none
