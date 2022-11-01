@@ -7,7 +7,7 @@ variables:
   ap_vm_image: ubuntu-20.04
 
   namespace: mlopsv2 #Note: A namespace with many characters will cause storage account creation to fail due to storage account names having a limit of 24 characters.
-  postfix: 045
+  postfix: 046
   location: eastus
   environment: prod
   feathrprefix: feathr # Used to generate name for all feature store components that will be created
@@ -17,8 +17,8 @@ variables:
   featurestore_user: "risengupta@microsoft.com" # User (Email) to assign the right permission to users in order for them to access Azure key vault, permission to access the Storage Blob as a Contributor, and permission to submit jobs to Synapse cluster
 
   # Azure DevOps
-  ado_service_connection_rg: Azure-ARM-Prod
-  ado_service_connection_aml_ws: Azure-ARM-Prod
+  ado_service_connection_rg: Azure-DevopsAutoApp
+  ado_service_connection_aml_ws: Azure-DevopsAutoApp
 
   # DO NOT TOUCH
 
