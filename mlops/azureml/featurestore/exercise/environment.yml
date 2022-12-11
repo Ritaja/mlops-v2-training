@@ -1,0 +1,14 @@
+name: datascience-env
+
+dependencies:
+  - python=3.10
+  - numpy
+  - toolz
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - pyspark
+
+  - pip:
+      - ipykernel
+      - feathr
