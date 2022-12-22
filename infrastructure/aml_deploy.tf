@@ -122,9 +122,9 @@ module "data_explorer" {
   rg_name  = module.resource_group.name
   location = module.resource_group.location
 
-  prefix  = var.prefix
-  postfix = var.postfix
-  env = var.environment
+  prefix            = var.prefix
+  postfix           = var.postfix
+  env               = var.environment
   key_vault_id      = module.key_vault.id
   enable_monitoring = var.enable_monitoring
 

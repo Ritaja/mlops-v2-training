@@ -56,3 +56,9 @@ variable "subnet_id" {
   type        = string
   description = "The ID of the subnet from which private IP addresses will be allocated for this Private Endpoint"
 }
+
+variable "enable_feature_store" {
+  type        = bool
+  default     = false
+  description = "flag to enable or disable feature store"
+}

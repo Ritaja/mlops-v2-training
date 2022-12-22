@@ -1,0 +1,12 @@
+location                    = "francecentral"
+prefix                      = "mlops"
+environment                 = "dev"
+postfix                     = "001"
+enable_aml_computecluster   = false
+enable_aml_secure_workspace = false
+enable_monitoring           = false
+enable_feature_store        = true
+client_secret               = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+sql_admin_user              = "sqladmin"
+sql_admin_password          = "ThisIsNotVerySecure!"
+fs_onlinestore_conn_name    = "FEATHR-ONLINE-STORE-CONN"

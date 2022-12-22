@@ -42,3 +42,21 @@ variable "subnet_id" {
   type        = string
   description = "The ID of the subnet from which private IP addresses will be allocated for this Private Endpoint"
 }
+
+variable "fs_onlinestore_conn_name" {
+  type        = string
+  default     = ""
+  description = "feature store: Name of the secret for the online store connection string"
+}
+
+variable "fs_onlinestore_conn" {
+  type        = string
+  default     = ""
+  description = "feature store: Online store connection string"
+}
+
+variable "enable_feature_store" {
+  type        = bool
+  default     = false
+  description = "Enable feature store deployment (additional secrets deployed) to key vault"
+}

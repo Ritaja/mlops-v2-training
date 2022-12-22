@@ -1,5 +1,7 @@
 data "azurerm_client_config" "current" {}
 
+data "azuread_client_config" "current" {}
+
 resource "azurerm_key_vault" "kv" {
   name                = "kv-${var.prefix}-${var.postfix}${var.env}"
   location            = var.location
@@ -11,7 +13,7 @@ resource "azurerm_key_vault" "kv" {
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
+    object_id = data.azuread_client_config.current.object_id
 
     key_permissions = [
       "Create",
@@ -71,4 +73,14 @@ resource "azurerm_private_endpoint" "kv_pe" {
   count = var.enable_aml_secure_workspace ? 1 : 0
 
   tags = var.tags
+}
+
+resource "azurerm_key_vault_secret" "fs_onlinestore_conn" {
+  # Deploy conditionally based on Feature Flag variable
+  count = var.enable_feature_store == true ? 1 : 0
+
+  name         = var.fs_onlinestore_conn_name
+  value        = var.fs_onlinestore_conn
+  key_vault_id = azurerm_key_vault.kv.id
+
 }
