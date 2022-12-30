@@ -62,3 +62,23 @@ variable "fs_onlinestore_conn_name" {
   type        = string
   description = "feature store: Name of the secret for the online store connection string"
 }
+
+variable "feathr_app_image" {
+  type        = string
+  description = "Feathr app image name to pull from docker registry"
+}
+
+variable "feathr_app_image_tag" {
+  type        = string
+  description = "Feathr app image tag to pull from docker registry"
+}
+
+variable "react_enable_rbac" {
+  type        = bool
+  description = "Enable RBAC for the Feathr React App"
+}
+
+variable "aad_client_id" {
+  type        = string
+  description = "AAD Client ID"
+}
