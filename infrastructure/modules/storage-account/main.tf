@@ -122,5 +122,5 @@ resource "azurerm_storage_data_lake_gen2_filesystem" "st_filesystem" {
   name               = "dl${local.safe_prefix}${local.safe_postfix}${var.env}"
   storage_account_id = azurerm_storage_account.st.id
 
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 }

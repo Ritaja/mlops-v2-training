@@ -60,3 +60,15 @@ variable "enable_feature_store" {
   default     = false
   description = "Enable feature store deployment (additional secrets deployed) to key vault"
 }
+
+variable "uaid_principal_id" {
+  type        = string
+  default     = ""
+  description = "Principal ID of the User Assigned Identity for feature store"
+}
+
+variable "uaid_tenant_id" {
+  type        = string
+  default     = ""
+  description = "Tenant ID of the User Assigned Identity for feature store"
+}

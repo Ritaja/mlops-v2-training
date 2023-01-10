@@ -84,3 +84,27 @@ resource "azurerm_key_vault_secret" "fs_onlinestore_conn" {
   key_vault_id = azurerm_key_vault.kv.id
 
 }
+
+# access policy for user assigned identity if Feature Flag is enabled
+
+resource "azurerm_key_vault_access_policy" "fsid_access_policy" {
+  # Deploy conditionally based on Feature Flag variable
+  count = var.enable_feature_store == true ? 1 : 0
+
+  key_vault_id = azurerm_key_vault.kv.id
+  tenant_id    = var.uaid_tenant_id
+  object_id    = var.uaid_principal_id
+
+  key_permissions = [
+    "Create",
+    "Get",
+  ]
+
+  secret_permissions = [
+    "Set",
+    "Get",
+    "Delete",
+    "Purge",
+    "Recover"
+  ]
+}

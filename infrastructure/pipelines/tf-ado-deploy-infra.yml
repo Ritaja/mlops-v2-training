@@ -16,21 +16,6 @@ parameters:
   - name: jumphost_password
     type: string
     default: "ThisIsNotVerySecure!"
-  - name: featurestore_sql_username
-    type: string
-    default: "sqladmin"
-  - name: featurestore_sql_password
-    type: string
-    default: "ThisIsNotVerySecure!"
-  - name: AAD_CLIENT_ID
-    type: string
-    default: "d5d082e1-641e-46a3-b681-81c885f355ab"
-  - name: AZURE_TENANT_ID
-    type: string
-    default: "72f988bf-86f1-41af-91ab-2d7cd011db47"
-  - name: AZURE_AAD_OBJECT_ID
-    type: string
-    default: "075c6b3e-1a26-44ff-9118-12cfd9fe75f8"
 
 trigger:
   - none
@@ -81,18 +66,3 @@ stages:
             parameters:
               jumphost_username: ${{parameters.jumphost_username}}
               jumphost_password: ${{parameters.jumphost_password}}
-
-  - stage: DeployFeatureStore
-    displayName: Deploy Feature Store Components
-    jobs:
-      - job: DeployFeatureStoreResources
-        displayName: Deploy Feature Store Resources
-        steps:
-          - checkout: self
-            path: s/
-          - checkout: mlops-templates
-            path: s/templates/
-          - template: templates/infra/create-featurestore.yml@mlops-templates
-            parameters:
-              featurestore_sql_username: ${{parameters.featurestore_sql_username}}
-              featurestore_sql_password: ${{parameters.featurestore_sql_password}}
