@@ -24,7 +24,7 @@ module "resource_group_fs" {
 
 module "storage_account_fs" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/storage-account"
 
@@ -50,7 +50,7 @@ module "storage_account_fs" {
 
 module "redis_cache_fs" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/redis-cache"
 
@@ -68,7 +68,7 @@ module "redis_cache_fs" {
 
 module "ua_identity_fs" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/ua-identity"
 
@@ -86,7 +86,7 @@ module "ua_identity_fs" {
 
 module "key_vault_fs" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/key-vault"
 
@@ -112,7 +112,7 @@ module "key_vault_fs" {
 
 module "synapse_workspace" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/synapse-workspace"
 
@@ -134,7 +134,7 @@ module "synapse_workspace" {
 
 module "mssql_server" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/mssql-server"
 
@@ -154,7 +154,7 @@ module "mssql_server" {
 # make sure to opt in for beta: https://registry.terraform.io/providers/hashicorp/azurerm/2.99.0/docs/guides/3.0-app-service-beta
 module "app_service_fs" {
   # Deploy conditionally based on Feature Flag variable
-  count = var.enable_feature_store == true ? 1 : 0
+  count = var.enable_feature_store ? 1 : 0
 
   source = "./modules/app-service"
 
