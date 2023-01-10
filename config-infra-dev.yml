@@ -20,7 +20,9 @@ variables:
   feathr_app_image: feathrfeaturestore/feathr-registry
   feathr_app_image_tag: releases-v0.9.0
   react_enable_rbac: true
-  aad_client_id: 350c2ffa-b4cf-49e4-8c59-feb23dd83e9f
+  aad_client_id: dac8fd0a-b5e0-43fa-a191-f55d5b453cdf
+  # added flag for this:  https://registry.terraform.io/providers/hashicorp/azurerm/2.99.0/docs/guides/3.0-app-service-beta
+  # remove the environment variable when this is no longer required
   ARM_THREEPOINTZERO_BETA_RESOURCES: true
 
   # Azure DevOps
