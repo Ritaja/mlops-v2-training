@@ -123,9 +123,9 @@ module "synapse_workspace" {
   postfix            = var.postfix
   env                = var.environment
   storage_account_id = module.storage_account_fs[0].filesystem_id
-  #storage_account_id = azurerm_storage_data_lake_gen2_filesystem.example.id
   sql_admin_user     = var.sql_admin_user
   sql_admin_password = var.sql_admin_password
+  spark_version      = var.spark_version
 
   tags = local.tags
 }

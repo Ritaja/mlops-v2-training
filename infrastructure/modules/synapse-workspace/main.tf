@@ -16,6 +16,7 @@ resource "azurerm_synapse_spark_pool" "feathr_synapse_sparkpool" {
   node_size_family     = "MemoryOptimized"
   node_size            = "Small"
   cache_size           = 100
+  spark_version        = var.spark_version
 
   auto_scale {
     max_node_count = 5

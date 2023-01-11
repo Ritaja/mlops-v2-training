@@ -45,3 +45,8 @@ variable "sql_admin_password" {
   type        = string
   description = "SQL admin password"
 }
+
+variable "spark_version" {
+  type        = string
+  description = "Spark version for the spark pool"
+}

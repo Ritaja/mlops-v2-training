@@ -82,3 +82,8 @@ variable "aad_client_id" {
   type        = string
   description = "AAD Client ID"
 }
+
+variable "spark_version" {
+  type        = string
+  description = "Spark version for the spark pool"
+}
