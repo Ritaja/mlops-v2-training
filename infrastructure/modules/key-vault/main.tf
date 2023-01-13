@@ -85,26 +85,6 @@ resource "azurerm_key_vault_secret" "fs_onlinestore_conn" {
 
 }
 
-# access policy for user/SP who is running the provisioning
-resource "azurerm_key_vault_access_policy" "initial_access_policy" {
-  key_vault_id = azurerm_key_vault.kv.id
-  tenant_id = data.azurerm_client_config.current.tenant_id
-  object_id = data.azuread_client_config.current.object_id
-
-  key_permissions = [
-    "Create",
-    "Get",
-  ]
-
-  secret_permissions = [
-    "Set",
-    "Get",
-    "Delete",
-    "Purge",
-    "Recover"
-  ]
-}
-
 # access policy for user assigned identity if Feature Flag is enabled
 
 resource "azurerm_key_vault_access_policy" "fsid_access_policy" {

@@ -1,5 +1,9 @@
 data "azurerm_client_config" "current" {}
 
+data "http" "ip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
 resource "azurerm_synapse_workspace" "feathr_synapse_workspace" {
   name                                 = "sy${var.prefix}-${var.postfix}${var.env}"
   resource_group_name                  = var.rg_name
@@ -13,11 +17,11 @@ resource "azurerm_synapse_workspace" "feathr_synapse_workspace" {
 
 # Allow all IPs to access Synapse workspace, to change in second release of this module
 # with security hardening
-resource "azurerm_synapse_firewall_rule" "allow_all" {
-  name                 = "AllowAll"
+resource "azurerm_synapse_firewall_rule" "allow_deployment_vm" {
+  name                 = "AllowDeploymetVM"
   synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
-  start_ip_address     = "0.0.0.0"
-  end_ip_address       = "255.255.255.255"
+  start_ip_address     = "${chomp(data.http.ip.body)}"
+  end_ip_address       = "${chomp(data.http.ip.body)}"
 }
 
 resource "azurerm_synapse_spark_pool" "feathr_synapse_sparkpool" {
@@ -52,5 +56,5 @@ resource "azurerm_synapse_role_assignment" "synapse_workspace_admin" {
   role_name            = "Synapse Administrator"
   principal_id         = var.priviledged_object_id
 
-  depends_on = [azurerm_synapse_firewall_rule.allow_all]
+  depends_on = [azurerm_synapse_firewall_rule.allow_deployment_vm]
 }

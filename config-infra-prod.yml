@@ -21,9 +21,9 @@ variables:
   feathr_app_image: feathrfeaturestore/feathr-registry
   feathr_app_image_tag: releases-v0.9.0
   react_enable_rbac: true
-  aad_client_id: dac8fd0a-b5e0-43fa-a191-f55d5b453cdf
+  aad_client_id: aca31809-3fa7-48a7-b29a-bd912e041602
   spark_version: 3.1
-  priviledged_object_id: e7b42456-f399-43e5-abae-956d63113b8d # AAD Object ID for user, used to set pividges fro user in KV and Synapse for feature store components
+  priviledged_object_id: 5750d42c-a495-4c44-a257-0c45c384108c # AAD Object ID for user, used to set pividges for user in KV and Synapse for feature store components
   # added flag for this:  https://registry.terraform.io/providers/hashicorp/azurerm/2.99.0/docs/guides/3.0-app-service-beta
   # remove the environment variable when this is no longer required
   ARM_THREEPOINTZERO_BETA_RESOURCES: true
