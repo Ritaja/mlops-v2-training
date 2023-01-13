@@ -51,10 +51,17 @@ resource "azurerm_synapse_workspace_aad_admin" "synapse_aad_admin" {
   tenant_id            = data.azurerm_client_config.current.tenant_id
 }
 
+# introducing as firewall rule needs time to take effect: https://github.com/hashicorp/terraform-provider-azurerm/issues/13510
+resource "time_sleep" "wait_60_seconds" {
+  depends_on = [null_resource.previous]
+
+  create_duration = "60s"
+}
+
 resource "azurerm_synapse_role_assignment" "synapse_workspace_admin" {
   synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
   role_name            = "Synapse Administrator"
   principal_id         = var.priviledged_object_id
 
-  depends_on = [azurerm_synapse_firewall_rule.allow_deployment_vm]
+  depends_on = [azurerm_synapse_firewall_rule.allow_deployment_vm, time_sleep.wait_60_seconds]
 }
