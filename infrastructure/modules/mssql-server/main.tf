@@ -23,11 +23,11 @@ resource "azurerm_mssql_database" "mssql_db" {
   tags = var.tags
 }
 
-# this is the current wa to allow Azure internal IP to access the SQL server, update when necessary
-resource "azurerm_sql_firewall_rule" "allow_azure_internal" {
+# this is the current way to allow Azure internal IP to access the SQL server, update when necessary: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_firewall_rule
+resource "azurerm_mssql_firewall_rule" "allow_azure_internal" {
   name                = "Allow Azure Internal"
   resource_group_name = var.rg_name
-  server_name         = azurerm_sql_server.mssql_server.name
+  server_name         = azurerm_mssql_server.mssql_server.name
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"
 }
