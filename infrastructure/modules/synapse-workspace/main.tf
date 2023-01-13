@@ -18,8 +18,6 @@ resource "azurerm_synapse_firewall_rule" "allow_all" {
   synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
   start_ip_address     = "0.0.0.0"
   end_ip_address       = "255.255.255.255"
-
-  tags = var.tags
 }
 
 resource "azurerm_synapse_spark_pool" "feathr_synapse_sparkpool" {
@@ -54,5 +52,5 @@ resource "azurerm_synapse_role_assignment" "synapse_workspace_admin" {
   role_name            = "Synapse Administrator"
   principal_id         = var.priviledged_object_id
 
-  depends_on = [azurerm_synapse_firewall_rule.example]
+  depends_on = [azurerm_synapse_firewall_rule.allow_all]
 }
