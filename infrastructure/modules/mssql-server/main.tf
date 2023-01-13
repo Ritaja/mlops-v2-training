@@ -27,7 +27,7 @@ resource "azurerm_mssql_database" "mssql_db" {
 resource "azurerm_mssql_firewall_rule" "allow_azure_internal" {
   name                = "Allow Azure Internal"
   resource_group_name = var.rg_name
-  server_name         = azurerm_mssql_server.mssql_server.name
+  server_id         = azurerm_mssql_server.mssql_server.id
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"
 }
