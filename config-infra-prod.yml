@@ -23,6 +23,7 @@ variables:
   react_enable_rbac: true
   aad_client_id: dac8fd0a-b5e0-43fa-a191-f55d5b453cdf
   spark_version: 3.1
+  priviledged_object_id: e7b42456-f399-43e5-abae-956d63113b8d # AAD Object ID for user, used to set pividges fro user in KV and Synapse for feature store components
   # added flag for this:  https://registry.terraform.io/providers/hashicorp/azurerm/2.99.0/docs/guides/3.0-app-service-beta
   # remove the environment variable when this is no longer required
   ARM_THREEPOINTZERO_BETA_RESOURCES: true

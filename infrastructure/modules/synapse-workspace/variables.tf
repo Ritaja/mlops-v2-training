@@ -50,3 +50,8 @@ variable "spark_version" {
   type        = string
   description = "Spark version for the spark pool"
 }
+
+variable "priviledged_object_id" {
+  type        = string
+  description = "Object ID of the user or service principal that will ge granted priviledges in Synapse for feature store"
+}

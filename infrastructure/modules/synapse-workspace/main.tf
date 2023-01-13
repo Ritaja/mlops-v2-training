@@ -1,3 +1,5 @@
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_synapse_workspace" "feathr_synapse_workspace" {
   name                                 = "sy${var.prefix}-${var.postfix}${var.env}"
   resource_group_name                  = var.rg_name
@@ -9,6 +11,16 @@ resource "azurerm_synapse_workspace" "feathr_synapse_workspace" {
   tags = var.tags
 }
 
+# Allow all IPs to access Synapse workspace, to change in second release of this module
+# with security hardening
+resource "azurerm_synapse_firewall_rule" "allow_all" {
+  name                 = "AllowAll"
+  synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
+  start_ip_address     = "0.0.0.0"
+  end_ip_address       = "255.255.255.255"
+
+  tags = var.tags
+}
 
 resource "azurerm_synapse_spark_pool" "feathr_synapse_sparkpool" {
   name                 = "sp${var.env}"
@@ -28,4 +40,19 @@ resource "azurerm_synapse_spark_pool" "feathr_synapse_sparkpool" {
   }
 
   tags = var.tags
+}
+
+resource "azurerm_synapse_workspace_aad_admin" "synapse_aad_admin" {
+  synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
+  login                = "AzureAD Admin"
+  object_id            = var.priviledged_object_id
+  tenant_id            = data.azurerm_client_config.current.tenant_id
+}
+
+resource "azurerm_synapse_role_assignment" "synapse_workspace_admin" {
+  synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
+  role_name            = "Synapse Administrator"
+  principal_id         = var.priviledged_object_id
+
+  depends_on = [azurerm_synapse_firewall_rule.example]
 }

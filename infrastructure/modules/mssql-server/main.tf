@@ -20,5 +20,18 @@ resource "azurerm_mssql_database" "mssql_db" {
   sku_name       = "S0"
   zone_redundant = false
 
+  provisioner "local-exec" {
+    command = "echo ${self.private_ip} >> private_ips.txt"
+  }
+
   tags = var.tags
+}
+
+# this is the current wa to allow Azure internal IP to access the SQL server, update when necessary
+resource "azurerm_sql_firewall_rule" "allow_azure_internal" {
+  name                = "Allow Azure Internal"
+  resource_group_name = azurerm_resource_group.example.name
+  server_name         = azurerm_sql_server.example.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
 }

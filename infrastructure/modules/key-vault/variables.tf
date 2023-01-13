@@ -72,3 +72,9 @@ variable "uaid_tenant_id" {
   default     = ""
   description = "Tenant ID of the User Assigned Identity for feature store"
 }
+
+variable "priviledged_object_id" {
+  type        = string
+  description = "Object ID of the user or service principal that will ge granted priviledges in keyvault for feature store"
+}
+
