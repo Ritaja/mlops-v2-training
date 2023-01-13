@@ -28,8 +28,8 @@ variables:
   ARM_THREEPOINTZERO_BETA_RESOURCES: true
 
   # Azure DevOps
-  ado_service_connection_rg: Azure-DevopsAutoApp
-  ado_service_connection_aml_ws: Azure-DevopsAutoApp
+  ado_service_connection_rg: Azure-ARM-Dev-rsmlopsado
+  ado_service_connection_aml_ws: Azure-ARM-Dev-rsmlopsado
 
   # DO NOT TOUCH
 
