@@ -51,7 +51,7 @@ resource "time_sleep" "wait_60_seconds" {
   create_duration = "60s"
   # apply the create table use mssql cli
   provisioner "local-exec" {
-    command = "mssql-cli -S ${azurerm_mssql_server.mssql_server.fully_qualified_domain_name} -U ${var.sql_admin_user} -P ${var.sql_admin_password} -d ${azurerm_mssql_database.mssql_db.name} --input-file ./sql/create_userroles.sql "
+    command = "mssql-cli -S ${azurerm_mssql_server.mssql_server.fully_qualified_domain_name} -U ${var.sql_admin_user} -P ${var.sql_admin_password} -d ${azurerm_mssql_database.mssql_db.name} --input_file ./sql/create_userroles.sql "
   }
 }
 
