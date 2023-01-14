@@ -56,6 +56,9 @@ stages:
           - checkout: mlops-templates
             path: s/templates/
           - template: templates/infra/install-terraform.yml@mlops-templates
+          # required to create the userroles table in SQL for feature store, should be pushed to the app for creation
+          # for now as the app does not create, remove later: https://github.com/feathr-ai/feathr/tree/2cf23a510ff1ed523026b81eabde60b35456b8af/registry/access_control#initialize-userroles-records
+          - template: templates/infra/install-mssql-cli.yml@mlops-templates
           - template: templates/infra/run-terraform-init.yml@mlops-templates
           - template: templates/infra/run-terraform-validate.yml@mlops-templates
           - template: templates/infra/run-terraform-plan.yml@mlops-templates

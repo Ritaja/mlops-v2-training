@@ -15,8 +15,7 @@ resource "azurerm_synapse_workspace" "feathr_synapse_workspace" {
   tags = var.tags
 }
 
-# Allow all IPs to access Synapse workspace, to change in second release of this module
-# with security hardening
+# Allow deployment VM to access the Synapse workspace to make changes
 resource "azurerm_synapse_firewall_rule" "allow_deployment_vm" {
   name                 = "AllowDeploymetVM"
   synapse_workspace_id = azurerm_synapse_workspace.feathr_synapse_workspace.id
@@ -53,7 +52,7 @@ resource "azurerm_synapse_workspace_aad_admin" "synapse_aad_admin" {
 
 # introducing as firewall rule needs time to take effect: https://github.com/hashicorp/terraform-provider-azurerm/issues/13510
 resource "time_sleep" "wait_60_seconds" {
-  depends_on = [null_resource.previous]
+  depends_on = [azurerm_synapse_firewall_rule.allow_deployment_vm]
 
   create_duration = "60s"
 }
